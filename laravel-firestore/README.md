@@ -9,6 +9,7 @@ install and enable gRPC extension for PHP, and add the Cloud Firestore PHP libra
 
 # Laravel Environment Variables
 
+In case you want to override the default project from the key file.
 ```
 FIREBASE_PROJECT_ID=your_firebase_projectId
 ```
