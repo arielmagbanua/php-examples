@@ -1,0 +1,19 @@
+{
+    "name": "arielmagbanua/php-firestore",
+    "description": "A simple setup for firestore usage in a php project.",
+    "type": "project",
+    "license": "GPL 3.0",
+    "autoload": {
+        "psr-4": {
+            "ArielMagbanua\\PhpFirestore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ariel magbanua"
+        }
+    ],
+    "require": {
+        "google/cloud-firestore": "^1.23"
+    }
+}
