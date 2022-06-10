@@ -15,9 +15,15 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(FirestoreClient::class, function ($app) {
-            return new FirestoreClient([
-                'projectId' => env('FIREBASE_PROJECT_ID')
-            ]);
+            $projectId = env('FIREBASE_PROJECT_ID');
+
+            if ($projectId) {
+                return new FirestoreClient([
+                    'projectId' => $projectId
+                ]);
+            }
+
+            return new FirestoreClient();
         });
     }
 
