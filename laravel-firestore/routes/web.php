@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (FirestoreClient $firestoreClient) {
-    $neptunesData = $firestoreClient->collection('clients')
+    return $firestoreClient->collection('clients')
         ->document('neptunes')
         ->snapshot()
         ->data();
-
-    return $neptunesData;
 });
