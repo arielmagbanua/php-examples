@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (FirestoreClient $firestoreClient) {
-    return $firestoreClient->collection('clients')
-        ->document('neptunes')
-        ->snapshot()
-        ->data();
+Route::get('/movies', function (FirestoreClient $db) {
+    $moviesCollection = $db->collection('movies')
+        ->documents()
+        ->rows();
+
+    // movies array
+    $movies = [];
+
+    foreach ($moviesCollection as $movieSnapshot) {
+        // get the movie data and store in the array
+        $movies[] = $movieSnapshot->data();
+    }
+
+    return $movies;
 });
+
