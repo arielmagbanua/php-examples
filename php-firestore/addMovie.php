@@ -4,10 +4,11 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Firestore\FirestoreClient;
 
-$firestore = new FirestoreClient();
+// create the firestore client
+$db = new FirestoreClient();
 
-// movies collection
-$moviesCollection = $firestore->collection('movies');
+// get the movie collection
+$moviesCollection = $db->collection('movies');
 
 // new movie
 $newMovie = [
@@ -30,5 +31,8 @@ $newMovie = [
 // add the movie
 $result = $moviesCollection->add($newMovie);
 
+// set the header
 header('Content-Type: application/json');
+
+// encode the movie data as JSON string and print as a response
 echo json_encode($result->snapshot()->data());
